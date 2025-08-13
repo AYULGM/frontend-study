@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  /* :가상 클래스 선택자    :: 가상 요소 선택자 */
+  .placeholder-hidden:focus::placeholder {
+    color: transparent;
+    /* transparent : 투명한 */
+  }
+</style>
+
+<body>
+  <!-- input(인라인-블록): 사용자로부터 데이터를 입력받는 요소 -->
+  <!-- inline-block: 기본적인 특징은 인라인 요소(base)와 동일
+   + 블록 요소처럼 가로/세로 길이와 상하/좌우 여백을 모두 지정가능 -->
+
+  <!-- type 속성: 입력받을 데이터 타입을 지정 -->
+  <!-- 일반 텍스트 , type="text"안적어도 기본적으로 되어있긴한데 명시적으로 그냥 적어놔라 -->
+  <input type="text">
+
+  <!-- 값을 미리 입력 -->
+  <input type="text" value="gyeong.Lee">
+
+  <!-- 입력할 값의 힌트 -->
+  <input type="text" placeholder="이름을 입력하세요!">
+  <!-- Tip! 포커스(마우스 클릭) 시 사라지는 힌트 만드는법 -->
+  <input type="text" placeholder="이름을 입력하세요!" class="placeholder-hidden">
+
+  <!-- 비활성화: 수정 불가, Tab키로 선택(=focus) 불가, submit(서버로 제출) 불가 -->
+  <input type="text" value="disabled 테스트" disabled>
+  <!-- (참고) 읽기 전용: 수정 불가, Tab키로 선택(=focus) 가능(사용자와 상호작용 가능하다는 뜻), submit(서버로 제출) 가능 -->
+  <input type="text" value="readonly 테스트" readonly>
+
+  <hr>
+
+  <!-- 체크박스 -->
+  <input type="checkbox"> Apple
+  <input type="checkbox"> Banana
+
+  <br> <!-- 지금은 테스트 빨리 보여주려고 그런거고 웬만하면 이렇게 하지말고(가라치는거) input은 블럭요소도 있으니 margin으로 거리 벌려라-->
+
+  <!-- 
+    label 바인딩(묶다) 방법 2가지     <-- 마우스 클릭이 익숙치 않은분들(노인,어린이)이 체크박스 편하게 누르게하기위함
+    1. label 요소 내부에 input 요소 배치    (부모 관계)
+    2. for 속성이 input 요소의 id 속성과 같아야 함   (형제 관계)
+  -->
+  <label>
+    <input type="checkbox"> Apple
+  </label>
+  <label>
+    <input type="checkbox"> Banana
+  </label>
+
+  <br>
+
+  <input type="checkbox" id="apple">
+  <label for="apple">Apple</label>
+
+  <input type="checkbox" id="banana">
+  <label for="banana">Banana</label>
+
+  <!-- 
+    label 사용 이점(웹 접근성과 관련)
+    1. 매우 작은 영역(예: 확인란)을 클릭하는 데 어려움이 있는 사용자
+    - 사용자가 요소 내의 텍스트를 클릭하면 <label>입력이 토글되기 때문(히트 영역이 증가함)
+    2. 스크린 리더 사용자(사용자가 요소에 초점을 맞추면 레이블을 소리내어 읽음)
+  -->
+  <!-- (참고) aria-label 속성 
+    시각적으로 레이블이 없을 때, 또는 디자인상 숨겨야 할 때 스크린 리더에게 읽어줄 대체 설명을 주는 속성
+    가능한 경우 <label>을 쓰고, 보조 용도로 aria-label을 활용하는 게 가장 안전 -->
+
+  <!--   <input type="text" aria-label="이름">  이렇게 씀-->
+
+  <br>
+
+  <!-- 값을 미리 체크 -->
+  <label>
+    <input type="checkbox"> Apple
+  </label>
+  <label>
+    <input type="checkbox" checked> Banana
+  </label>
+
+  <hr>
+
+  <!-- 라디오 버튼 -->
+  <label>
+    <input type="radio"> Apple
+  </label>
+  <label>
+    <input type="radio"> Banana
+  </label>
+
+  <br>
+
+  <!-- name 속성으로 그룹화 -->
+  <!-- 체크박스는 중복 선택 가능, 라디오 버튼은 그룹당 한개만 선택 가능 -->
+  <label>
+    <input type="radio" name="fruits" checked> Apple
+  </label>
+  <label>
+    <input type="radio" name="fruits"> Banana
+  </label>
+
+  <hr>
+
+  <!-- 그 밖의 다른 입력 양식들(w3school 참고) , (type 속성에서 ctrl + space 하면 종류가 나옴 ) -->
+  <!-- 버튼 -->
+  <input type="button" value="닫기">
+
+  <button type="button">닫기</button>
+
+  <!-- <button> 태그의 장점
+    요소 내부에 텍스트 뿐만 아니라 다른 태그를 넣을 수 있음 -->
+  <button type="button">
+    <b>닫기</b><br> <!-- <b> 태그같은 디자인요소는 웬만하면 html이 아닌 CSS에 넣는게 좋은 습관-->
+    테스트
+  </button>
+
+  <!-- (참고) type 속성을 항상 지정하여 브라우저에 버튼 유형을 알려주는게 좋음 
+   (브라우저마다 또는 사용 위치에 따라 다른 기본값을 가질 수도 있음)-->
+
+  <hr>
+
+  <!-- 색상 선택도구(Color Picker) , value는 미리 입력된값. ff는 16진수로 255 , #ff0000은 red-->
+  <label for="favcolor">좋아하는 색상:</label>
+  <input type="color" id="favcolor" value="#ff0000">
+
+  <hr>
+
+  <!-- 날짜 -->
+  <label for="birthday">생년월일:</label>
+  <input type="date" id="birthday">
+  <br>
+  <!-- 날짜 + 시간 -->
+  <label for="birthdaytime">생년월일(날짜+시간):</label>
+  <input type="datetime-local" id="birthdaytime">
+  <br>
+
+  <!-- 시간 -->
+  <label for="time">시간 선택:</label>
+  <input type="time" id="time">
+  <br>
+
+  <hr>
+
+  <!-- 이메일: submit 시 자동으로 이메일 형식 유효성 검사를 해줌(보기만해선 input과 별차이없어보임) -->
+  <form action="/signup"> <!-- 어차피 받아줄 서버 없어서 에러날거임-->
+    <label for="email">이메일:</label>
+    <input type="email" name="email" id="email"> <!-- 실무에서는 이메일 형식을 검증하는 코드를 따로짬-->
+    <button type="submit">가입</button>
+  </form>
+
+  <hr>
+
+  <!-- 파일 첨부 -->
+  <label for="myfile">파일 첨부:</label>
+  <input type="file" id="myfile" multiple> <!-- 한번에 여러개의 속성을 넣고싶다면 multiple , 드래그 or Ctrl클릭-->
+  <br>
+
+  <hr>
+
+  <!-- 범위 선택(기본값: 0~100) -->
+  <label for="volume">음량(0~50):</label>
+  <input type="range" id="volume" min="0" max="50" step="2">
+
+  <hr>
+
+  <!-- 비밀번호 -->
+  <label for="pwd">비밀번호:</label>
+  <input type="password" id="pwd" maxlength="10"> <!-- 나중에 패스워드 보이게 하려면 JS로 옆에 눈깔놓고 눌렀을때 type을 text로 바꾸면 보임-->
+  <!-- 개발자들은 F12 눌러서 프론트에서 maxlength를 수정해서 비밀번호 7자리밖에 못치는거 더 늘렸다고함 -->
+
+  <hr>
+
+  <!-- 셀렉트 박스(콤보 박스) -->
+  <!-- 속성
+   value: 서버로 전송되는 선택한 항목의 실제값 
+   selected: 항목을 미리 선택
+   -->
+  <label for="cars">차량 선택:</label>
+  <select id="cars"> <!-- 셀렉트 태그의 자식은 option이 온다. ul의 자식에 li가 오는것 처럼-->
+    <option value="">선택</option>
+    <option value="volvo">Volvo</option> <!-- Alt + 클릭으로 다중선택해서 여러줄에 있는거 한꺼번에 지울수있음 -->
+    <option value="benz">Benz</option>
+    <option value="audi" selected>Audi</option> <!-- 얘는 checked가 아닌 selected-->
+  </select>
+
+  <hr>
+
+  <!-- 여러 줄 입력 -->
+  <p>
+    <label for="multi1">여러 줄 입력1:</label>
+  </p>
+  <textarea id="multi1" cols="30" rows="6"></textarea> <!-- textarea의 기능인 cols(열) rows(행)로도 크기를 늘릴 수 있다. -->
+
+  <p>
+    <label for="multi1">여러 줄 입력2:</label>
+  </p>
+  <textarea id="multi1" cols="30" rows="6" spellcheck="false"></textarea> <!-- 빨간줄 쳐지는 스펠링체크를 꺼준다.(보통은 꺼주는편)-->
+
+  <p>
+    <label for="multi1">여러 줄 입력3:</label>
+  </p>
+  <textarea id="multi1" cols="30" rows="6" style="resize: none;"></textarea> <!-- Size를 바꿀 수 없게-->
+
+  <hr>
+
+  <!-- form(동기식(=요청이 끝날때 까지 기다림)): 사용자가 작성한 내용을 서버로 전송, 어떤 서버 경로로, 어떤 방식(GET 방식 , POST 방식)으로 전달할지 설정 // 엄밀히 방식은 6~7개 , 잘쓰이는건 4~5개정도 (delete,put,fetch)-->
+  <form action="/login" method="GET"> <!-- 방식(method)는 기본은 GET인데 직접 써서 명시를 해주자. 대/소문자 둘다됨(일반적인건 대문자)-->
+    <!-- name 속성: 서버로 전달할 때 유니크하게 구분하기 위한 이름 -->
+    <input type="text" name="id"> <!-- name속성(필수)이 있어야 서버로 전송이 될 때 문제가 없음 , key값 역할을 하는게 name-->
+    <input type="password" name="pw">
+    <button type="submit">로그인</button> <!-- submit 버튼이 있어야 서버로 전송이 됨-->
+  </form>
+
+  <!-- (결론적으로 form 태그를 쓸 수는 있어도 form을 이용한 동기식 요청은 요새 안씀) -->
+  <!-- 동기식과 비동기식의 가장 큰 차이는
+    동기식은 응답 올 때까지 멈춤,
+    비동기식은 기다리지 않고 진행
+
+    1) 동기식 요청(Synchronous Request)
+    요청을 보낸 뒤, 응답이 올 때까지 브라우저가 멈춤
+    응답이 올 때까지 다른 작업을 할 수 없음
+    사용성, 퍼포먼스 모두 떨어져 현대 웹에서는 거의 사용 안 함
+
+    예시:
+    전통적인 <form> 전송
+    과거 결제 모듈에서 사용
+
+    2) 비동기식 요청(Asynchronous Request)
+    요청을 보낸 뒤에도 브라우저는 멈추지 않고 다른 작업을 계속할 수 있음
+    서버 응답이 도착하면 그때 처리함
+    사용자가 화면 조작을 계속할 수 있어서 UX가 좋음
+
+    예시:
+    검색 자동완성
+    댓글 달기
+    쇼핑몰 장바구니 추가
+    무한 스크롤
+  -->
+
+</body>
+
+</html>
