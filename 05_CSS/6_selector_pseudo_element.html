@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 가상 요소 선택자: HTML에 가상의 요소를 생성 또는 제어 가능 */
+    /* 
+    ::before, ::after 사용 시
+    반드시 CSS의 content 속성과 같이 사용
+    */
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+      overflow: auto; /* 부모쪽에서 내용이 넘치면 기본값은 visible이라 다 보이는데 auto로하면 스크롤바 만들어줌 */
+    }
+
+    /* ::before ("요소의 내부 앞"에 내용 삽입) */
+    /* .box::before {
+      content: "앞!";
+    } */
+
+    /* ::after ("요소의 내부 뒤"에 내용 삽입) */
+    /* .box::after {
+      content: "뒤!";
+    } */
+
+    /* 꼭 텍스트가 아니어도 됨!
+     그런데 content 속성은 ""로 값을 비우더라도 필수 작성
+    */
+    .box::after {
+      content: "";
+      /* 필수 속성 */
+      width: 10px;
+      height: 30px;
+      background-color: royalblue;
+      /* 가상 요소는 인라인 요소이기 때문에 가로/세로 지정이 불가 
+      블록 요소로 전환 해야함 
+      inline-block 으로 할지 block으로 할지는 개발자가 판단
+
+      */
+      /* display: inline-block; */
+      display: block;
+
+    }
+
+    /* Tip! 메뉴 항목 사이에 세로바 넣기 */
+    .menu {
+      list-style: none;
+      /* disc 를 없앰 */
+      display: flex;
+      /* 수평구조로 바뀜 */
+    }
+
+    .menu li {
+      position: relative;
+      /* 부모가 position 기준을 정해줌 , 안정해주면 view-port의 기준을 따라감 */
+    }
+
+    /* 그냥 li에 | 넣으면 CSS를 못함 */
+    .menu li+li::before {
+      content: "";
+      /* 필수 속성 */
+      display: block;
+      width: 1px;
+      height: 12px;
+      background-color: #555;
+      position: absolute;
+      /* 정렬 , 나중에배움*/
+      top: 0;
+      /* li영역에서 위쪽으로 붙음 */
+      bottom: 0;
+      /* li영역에서 아래쪽으로 붙음*/
+      margin: auto;
+      /* 위쪽에도 붙으라그러고 아래쪽으로도 붙으라그러면 말이 안되잖아 */
+      /* top,bottom=0을 사이좋게 반반 나눠서 브라우저가 계산해서 여백을 반반 나눠줌 */
+    }
+
+    .menu li a {
+      text-decoration: none;
+      color: #656565;
+      padding: 0 15px; /* 2개면 상/하 + 좌/우  3개면 상 + 좌/우 + 하 4개면 상부터 시계방향 */
+    }
+
+    /* Quiz: 메뉴 항목에 마우스 올리면 밑줄 + 글자색 검정 */
+    .menu li a:hover {
+      text-decoration: underline;
+      color: black;
+    }
+
+    /* 가상 요소를 잘 활용하면 HTML 구조 추가와 class 속성 값의 추가 없이 구현 및 제어 가능 */
+    
+    /*  그 밖에 ::placeholder, ::-webkit-scrollbar */
+
+    /* Tip! 커스텀 스크롤바 만들기 , 기본스크롤 바도 이쁨  */
+    /* 스크롤바 너비 */
+    .custom-scroll::-webkit-scrollbar {
+      width: 20px; 
+    }
+    /* 스크롤바 트랙 */
+    .custom-scroll::-webkit-scrollbar-track {
+      background-color: pink;
+      border-radius: 5px; /* 스크롤바 트랙 모서리 깎기 */
+    }
+    /* 스크롤바 핸들 */
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background-color: red;
+      border-radius: 5px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background-color: aqua;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    ContentA!
+    ContentA!
+    ContentA!
+    ContentA!
+    ContentA!
+    ContentA!
+  </div>
+
+  <hr>
+
+  <!-- Tip! 메뉴 항목 사이에 세로바 넣기 -->
+  <ul class="menu">
+    <li>
+      <a href="javascript:void(0)">회사소개</a>
+    </li>
+    
+    <li>
+      <a href="javascript:void(0)">인재채용</a>
+    </li>
+    <li>
+      <a href="javascript:void(0)">제휴제안</a>
+    </li>
+    <li>
+      <a href="javascript:void(0)">이용약관</a>
+    </li>
+    <li>
+      <a href="javascript:void(0)">고객센터</a>
+    </li>
+  </ul>
+
+  <hr>
+
+  <!-- Tip! 커스텀 스크롤바 만들기 -->
+  <div class="box custom-scroll">
+    Content!
+    Content!
+    Content!
+    Content!
+    Content!
+    Content!
+    Content!
+    Content!
+    Content!
+    Content!
+    Content!
+    Content!
+    Content!
+  </div>
+
+</body>
+
+</html>
