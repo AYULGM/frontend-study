@@ -77,7 +77,7 @@
       console.log(el);
       // el안에 dataset안에 작명한 이름으로 접근
       // console.log(el.dataset.fruit-name); // 안됨
-      console.log(el.dataset.fruitName); // JS 표기법(카멜 케이스)
+      console.log(el.dataset.fruitName); // JS 표기법(카멜 케이스) fruitName처럼 소문자로 시작해야 HTML표준임
       
       el.addEventListener('click', () => {
         alert(el.dataset.fruitName);
