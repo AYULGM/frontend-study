@@ -31,7 +31,7 @@ header nav ul.main-menu { /* 너무 길어지면 또 선택자가 엄청많아�
 
 /* 7. 82~85 라인의 type이 text인 <input>태그에 focus 됐을 때의 선택자를 작성(속성 선택자 필수) */
 div input[type="text"]:focus:not(input[readonly]) { /* 동시만족이라 not이 focus 앞에와도 상관X */
-      background-color: violet; /* outline때문에  border가 가려져서 백그라운드컬러로함 */
+      background-color: violet; /* outline때문에  border가 가려져서 background-color 로함 */
       outline: none; /* none말고 0 집어넣어도 똑같은 결과 */
       border: 2px solid red;
 
