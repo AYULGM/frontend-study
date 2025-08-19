@@ -9,43 +9,49 @@
   <!-- 배경 shoes.jpg , Buy Now버튼에 hover넣기 , .sub-description 조건확인하기 -->
   <style>
     .main-background {
+    /* width: 100%; */
     text-align: center;
     color: white;
-    height: 600px;
-    background-size: cover;
+    height: 500px;
     background-image: url("./images/shoes.jpg");
-    margin-top: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
     }
     .main-title {
       font-size: 30px;
     }
     .main-content {
-      font-size: 12px;
+      font-size: 16px; /* 기본 값 */
     }
     .main-button {
       font-weight: bold;
-      padding: 5px 20px;
+      padding: 10px 30px;
+      margin-top: 30px;
+    }
+    .main-button:hover {
+      background-color: aqua;
     }
     .sub-description {
-      width: 150px;
-      min-width: 80%;
+      width: 80%;
+      /* min-width: 500px; */
       max-width: 700px;
-      height: 150px;
       color: black;
       position: absolute;
       display: block;
       /* 이미 되어있지만 일부러 명시 */
       left: 0;
       right: 0;
+
       margin: 240px auto;
       border: 2px solid lightgray;
       border-radius: 6px;
       background-color: white;
-      padding: 10px 20px;
+      
     }
 
     .history {
       background-color: whitesmoke;
+      padding: 100px;
     }
 
     .history>h4 {
