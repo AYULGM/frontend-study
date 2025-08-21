@@ -62,6 +62,14 @@
       margin: 5px; /* 마진 상쇄 일어남 */
     }
 
+    .blog-img > img { /* 이미지 오버플로우가 일어나서 부모영역에 맞춰 설정 , 이미지 비율이 깨질수 있음*/
+      width: 100%;
+      height: 100%;
+      /* 이미지 원본 비율을 유지하고 싶다면 */
+      object-fit: cover;
+      /* object-fit: contain; */
+    }
+
 
 
 
