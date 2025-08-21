@@ -6,116 +6,153 @@
   <title>Document</title>
 
   <style>
-    /* 공통 스타일은 앞부분에 작성 */
-    ul {
-      list-style: none;
-    }
-    a { /* a 태그는 기본적으로 커서:포인터가 들어가있음 */
-      text-decoration: none;
-      color: #000; /* 보라색으로 되어있는거 꼴보기 싫어서 검은색으로 바꿈 */
-    }
-
-    .navbar {
-      display: flex;
-      column-gap: 10px;
-    }
-    .navbar li {
-      width: 60px;
-      background-color: #ddd;
-      text-align: center;
-      padding: 10px; /* padding 만으로 값을주면 내부글자에 따라 길이가 바뀔수있음 맘대로 */
-      border-radius: 5px;
-    }
-    .navbar li a {
-      /* text-decoration: none;*/  /* 이렇게 안넣고 그냥 위에 쌤처럼 a자체에 넣는게 나음 공통스타일이니까*/ 
+    .text-input {
+      width: 120px;
+      padding: 6px 10px;
       font-size: 20px;
-      /* padding: 10px 20px; */ /* 누를 수 있는 영역을 넓히고싶으면 이 코드처럼 a태그에 패딩 넣으면 됨 */
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      transition: 0.5s;
+    }
+    /* Quiz: focus 됐을 때 테두리색 변경(#f00) */
+    .text-input:focus {
+      /* border: 2px solid #f00; */
+      border-color: #f00;
     }
 
-    .container {
-      width: 800px; /* 가로 길이가 있어야지만 가운데 정렬 가능 */
+    * {
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: none;
+    }
+    button {
+      cursor: pointer;
+    }
+
+    .form-background {
+      background-color: #333;
+      padding: 30px 0;
+    }
+
+    .form-container {
+      width: 80%;
+      max-width: 700px;
+      background-color: #fff;
+      padding: 30px;
       margin: 0 auto;
     }
-    .blog-list-item {
-      display: flex;
+
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 20px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      outline: none;
+      transition: 0.5s;
     }
-    .blog-content {
-      width: 80%;
-      height: 200px;
-    }
-    .blog-img {
-      width: 20%;
-      height: 200px;
+    .form-input:focus {
+      border-color: #aaa;
     }
 
-    .content-header {
+    .name-box {
       display: flex;
+      /* column-gap: 20px; */
+    }
+    .name-box > div:first-child {
+      width: 50%;
+      /* flex: 1; */
+      padding: 10px 10px 10px 0;
+    }
+    .name-box > div:last-child {
+      width: 50%;
+      /* flex: 1; */
+      padding: 10px 0 10px 10px;
+    }
+
+    .btn-box {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
     }
-    .blog-profile {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+    .btn-box input[type="checkbox"] {
+      width: 25px;
+      height: 25px;
+      vertical-align: middle;
     }
-    .blog-name > h4,
-    .blog-name > p {
-      margin: 5px; /* 마진 상쇄 일어남 */
+    .btn-box .btn-send {
+      padding: 8px 40px;
+      background-color: lightsalmon;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      transition: 2s;
     }
-
-
-
-
-
+    .btn-box .btn-send:hover {
+      background-color: coral;
+    }
   </style>
 </head>
 <body>
-  <!-- Tip! 레이아웃 만드는 기본
-    뭘 만들든 레이아웃은 항상 수평(행)으로 자른 후 박스부터 만들고 시작하면 됨
-    그리고 이 박스들을 전부 <div>로 구현해 놓으면 됨(물론 시맨틱 태그도 최대한 활용)
-    그리고 박스 안에 글 넣고 그림 넣고 하면 끝!
+  <h2>연습</h2>
+  <form>
+    <input type="text">
+    <input type="text" class="text-input">
+    <button type="submit">전송</button>
+    <!-- <form> 태그 안에서 버튼의 타입을 안써주면 submit으로 동작함
+      type은 명시적으로 써주는 것을 권장 -->
 
-    이 때 <div>는 블록 요소이기 때문에 위아래로 배치
-    좌우로 나란히 배치하고 싶으면 float(🤬쓰면안됨,원래용도가 레이아웃배치하는용도가 아님,지양해야함), inline-block(😐,블록요소를 갖고있으면서 수평배치 가능), Flexbox(😃, 가장 좋은방법)
-  -->
-  <!-- 이모지 단축키: 윈도우키 + .(마침표) -->
+    <!-- input 태그 쓸 때 label 태그도 같이 사용(권장) -->
+    <p>
+      <label for="name">너의 이름은</label>
+    </p>
+    <input type="text" id="name" class="text-input">
+  </form>
 
-  <!-- navbar -->
-  <nav>
-    <ul class="navbar">
-      <li><a href="#">영화</a></li>
-      <li><a href="#">맛집</a></li>
-      <li><a href="#">IT</a></li>
-      <li><a href="#">컴퓨터</a></li>
-    </ul>
-  </nav>
+  <h2>실전</h2>
+  <!-- 박스부터 그리기 -->
+  <div class="form-background">
+    <!-- 가로 길이는 80%를 차지하다가 700px에서 더 이상 안늘어나도록 제한 -->
+    <div class="form-container">
+      <form>
+        <h3>Contact Us</h3>
 
-  <!-- blog list -->
-  <div class="container">
-    <!-- blog list item: 게시글 하나 -->
-    <div class="blog-list-item">
-      <div class="blog-content">
-        <div class="content-header">
-          <!-- 프로필 이미지 -->
-          <img src="\05_CSS\images\img_avatar.png" alt="profile" class="blog-profile">
-          <!-- 작성자, 시간 -->
-          <div class="blog-name">
-            <h4>작성자</h4>
-            <p>1시간 전</p>
+        <!-- label, input, textarea -->
+        <p>
+          <label for="email">Your Email</label>
+        </p>
+        <input type="email" id="email" class="form-input" placeholder="email@example.com">
+
+        <div class="name-box">
+          <div>
+            <p>
+              <label for="firstname">First Name</label>
+            </p>
+            <input type="text" id="firstname" class="form-input">
+          </div>
+          <div>
+            <p>
+              <label for="lastname">Last Name</label>
+            </p>
+            <input type="text" id="lastname" class="form-input">
           </div>
         </div>
-        <div class="content-body">
-          <!-- 글 제목, 글 내용 -->
-          <h4>가성비 맛집을 발견했어요!</h4>
-          <p>
-            맛집발견 맛집발견 맛집발견 맛집발견 맛집발견 맛집발견 맛집발견
-            맛집발견 맛집발견 맛집발견 맛집발견 맛집발견 소 돼지 양 닭 개구리 말
-          </p>
+
+        <p>
+          <label for="msg">Message</label>
+        </p>
+        <textarea id="msg" class="form-input"></textarea>
+
+        <div class="btn-box">
+          <div>
+            <input type="checkbox" id="agree">
+            <label for="agree">Agree</label>
+          </div>
+          <button type="submit" class="btn-send">SEND</button>
         </div>
-      </div>
-      <div class="blog-img">
-        <!-- 샘플 이미지 -->
-        <img src="https://cataas.com/cat?width=400&height=300" alt="sample">
-      </div>
+      </form>
     </div>
   </div>
 </body>
