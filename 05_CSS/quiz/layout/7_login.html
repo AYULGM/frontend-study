@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+
+  <!-- 구글 머티리얼 아이콘(심볼) -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
 
@@ -21,16 +23,31 @@
     input:focus + .id-label {
       /* transform: scale(-0.5); */
       font-size: 10px;
-      transform: translate(-3px,-5px);
+      transform: translate(-3px,-15px);
+      /* 쌤은 transform대신에 bottom: 30px 이렇게 하심 */
+
+      /* focus가 풀리면 값이 써져있는데 placeholder가 중앙으로 오는건 나중에 자바스크립트로 해결 할것임 */
     }
     input:focus + .pw-label {
       /* transform: scale(-0.5); */
       font-size: 10px;
-      transform: translate(-3px,-5px);
+      transform: translate(-3px,-15px);
     }
     .login-background {
       background-color: white;
       padding: 20px;
+      /* .login-container를 중앙 정렬하기 위해 부모에 flex 넣기 */
+      display: flex;
+      justify-content: center;
+      /* .login-background의 공간이 적어서 align-item:center를 해도 무반응 */
+      /* 그래서 height를 viewport에 맞추게 하면됨 */
+      align-items: center;
+      /*이건 부모영역(body)에 맞추는거라 변함없음 */
+      /* height: 100%; */
+
+      /* 뷰포트의 높이만큼 가득 채우려면 100%가 아님에 주의! */
+      height: 100vh;
+      
     }
     .login-container {
       width: 60%;
@@ -41,25 +58,43 @@
       border-radius: 10px;
     }
     .id-box {
-      padding: 10px;
+      /* padding: 10px; */
+      padding: 27px 15px 8px;
       border: 1px solid gray;
-      border-radius: 10px 10px 0px 0px;
+      /* 0px이 아니라 그냥 0줘도되네 */
+      border-radius: 10px 10px 0 0px;
       display: flex;
       flex-direction: column;
       position:relative;
     }
-
+    .id-box .id-label,
+    .pw-box .pw-label{
+      /* 부모기준으로 하니까 id-box ,pw-box에 position값은 필수로 줘야함 */
+      position: absolute;
+      left: 15px;
+      bottom: 15px;
+    }
     .pw-box {
-      padding: 10px;
+      /* padding: 10px; */
+      padding: 27px 15px 8px;
       border: 1px solid gray;
+      /* 두개의 box가 테두리가 겹쳐서 찐하게 나오는것을 취소하려면 */
       border-top: 0px;
-      border-radius: 0px 0px 10px 10px;
+      /* 0px이 아니라 그냥 0줘도되네 */
+      border-radius: 0px 0 10px 10px;
       display: flex;
       flex-direction: column;    
       position:relative;
     }
+    /* 이렇게 ,(쉼표)로 묶어서 코드 중복 줄이는게 더 좋은 방법임 
+     .id-box,
+    .pw-box {
+
+    }  */
     .visibility_off {
       position: absolute;
+      /* 눈으로 보고 대강맞추기 */
+      top: 20px;
       right: 5%;
       cursor: pointer;
     }
@@ -82,6 +117,9 @@
       flex-direction: column;
       row-gap: 10px;
     }
+
+    /* 이렇게 줘도 되긴하는데 쌤은 btn공통클래스명 뒤에  클래스 명 하나 더 붙이심 (코드 중복 줄인거심) */
+    /* 아니면 ,(쉼표)를 줘서 다중선택을 해도 똑같을 듯 */
     .btn:first-child {
       background-color: green;
       padding: 10px;
@@ -106,10 +144,12 @@
   <div class="login-background">
     <div class="login-container">
       <div class="id-box">
+        <!-- input이 label 앞에올지 뒤에올지 개발자가 잘 선택해야 한다. CSS선택자의 한계점 -->
         <input type="text" id="ID" class="id-input">
         <label for="ID" class="id-label">아이디 또는 전화번호</label>
       </div>
       <div class="pw-box">
+        <!-- 쌤은 id,pw input 전부 같은 클래스 이름 form-input으로 묶으심 -->
         <input type="password" id="PW" class="pw-input">
         <label for="PW" class="pw-label">비밀번호</label>
         <span class="material-symbols-outlined visibility_off">visibility_off</span>

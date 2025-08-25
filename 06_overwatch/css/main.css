@@ -1,0 +1,136 @@
+/* (중요)
+  CSS 코드가 길어지면 선택자 찾기가 어렵기에
+  모든 CSS 코드는 HTML 구조에 맞춰 작성하는게 좋음
+*/
+
+body {
+  background-image: url("../images/bg.jpg");
+  /* 배경 이미지의 높이를 가득 채우기 위해 body를 화면 높이의 100%로 맞춤 
+    => 100% 가 아니라 100vh
+  */
+
+  /* body의 높이를 뷰포트와 동일하게 */
+  height: 100vh;
+  /* 이건 아닌가봄 */
+  /* background-size: 100vh 100vw; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-position: center; */
+}
+
+.container {
+  padding: 50px 0;
+}
+
+.container .heroes {
+  display: flex;
+  flex-direction: row; /* 기본값: row */
+  flex-wrap: wrap;
+  /* 영역 확인용 배경색 */
+  /* background-color: orange; */
+  justify-content: center;
+  /* 세로(Y축)스크롤은 몰라도 가로(X축)스크롤은 사용자입장에서 사용성이 떨어지기때문에 max-width만 준다. */
+  /* width: 700px; */
+  max-width: 700px;
+  /* 사용 조건: 블록 요소에 가로 사이즈가 명시되어 있는 경우*/
+  margin: 0 auto; 
+  /* flex로도 정렬이 가능하지만 그렇게 하면 더 복잡해짐 , 
+    방향을 column으로 바꿔야해서 ....무조건 flex를 쓰는게 좋은건 아님
+    간단히 정렬할 수 있는 것은 flex를 남발하지 않는 것이 좋음
+    */
+  padding: 40px 20px;
+}
+.container .heroes .hero {
+  width: 80px;
+  height: 84px;
+  margin: 4px;
+  background-color: #555;
+  border: 3px solid #fff;
+  transform: skewX(-14deg);
+  border-radius: 10px;
+  /* border 사용으로 요소의 크기가 커지는 것을 방지 */
+  /* box-sizing: border-box는 팀에따라 이렇게 개별적으로 넣을수있고 쌤은 *(전체)에 넣는게 편하다고 하심 */
+  box-sizing: border-box;
+  /* 모든 속성에 0.2초 동안 효과 */
+  /* transition: 0.2s; */
+  /* Quiz: transform(0.1s), background-color(0.6s) 개별 적용 */
+  transition:
+    transform 0.1s,
+    background-color .6s;
+
+    /* 부모쪽에서 넘치는내용 가리기 */
+    overflow: hidden;
+}
+
+/* Quiz: .hero에 마우스 올렸을 때 배경색(#ff9c00) 변경 및 확대(1.5배) */
+.container .heroes .hero:hover {
+  background-color: #ff9c00;
+  /* transform 속성을 덮어 쓰면서 기울임이 없어짐, 갖다가 다시 붙여넣기. */
+  transform: scale(1.5) skewX(-14deg);
+  /* 다음 형제보다 위에 쌓일 수 있도록 */
+  /* 원래는 position을 지정해줘야 z-index가 적용되는데 
+    .hero가 flex items라 가능함 , 궁금하면 찾아보기눌러서 z-index보셈 예전에 설명함 */
+  z-index: 1;
+}
+.container .heroes .hero .image {
+  /* div를 기울여놔서 140% */
+  width: 140%;
+  /* height가 0으로 되어있는데 값을 줘야 이미지가 나타남 */
+  height: 100%;
+  background-position: center;
+  /* background-size: cover; */
+  /* background-size를 세밀하게 조정하고 싶다면 px를 씀 */
+  background-size: 90px;
+  background-repeat: no-repeat;
+  /* skewX를 다시 원상복구 */
+  transform: skewX(14deg) translateX(-16px);
+}
+
+
+/* Quiz: 캐릭터 이미지를 배경으로 삽입 (주의: 내용이 없어 높이를 넣어야 이미지가 보임) */
+.container .heroes .hero:nth-child(1) .image { background-image: url("../images/hero1.png");}
+.container .heroes .hero:nth-child(2) .image { background-image: url("../images/hero2.png"); }
+.container .heroes .hero:nth-child(3) .image { background-image: url("../images/hero3.png"); }
+.container .heroes .hero:nth-child(4) .image { background-image: url("../images/hero4.png"); }
+.container .heroes .hero:nth-child(5) .image { background-image: url("../images/hero5.png"); }
+.container .heroes .hero:nth-child(6) .image { background-image: url("../images/hero6.png"); }
+.container .heroes .hero:nth-child(7) .image { background-image: url("../images/hero7.png"); }
+.container .heroes .hero:nth-child(8) .image { background-image: url("../images/hero8.png"); }
+.container .heroes .hero:nth-child(9) .image { background-image: url("../images/hero9.png"); }
+.container .heroes .hero:nth-child(10) .image { background-image: url("../images/hero10.png"); }
+
+.container .heroes .hero:nth-child(11) .image { background-image: url("../images/hero11.png"); }
+.container .heroes .hero:nth-child(12) .image { background-image: url("../images/hero12.png"); }
+.container .heroes .hero:nth-child(13) .image { background-image: url("../images/hero13.png"); }
+.container .heroes .hero:nth-child(14) .image { background-image: url("../images/hero14.png"); }
+.container .heroes .hero:nth-child(15) .image { background-image: url("../images/hero15.png"); }
+.container .heroes .hero:nth-child(16) .image { background-image: url("../images/hero16.png"); }
+.container .heroes .hero:nth-child(17) .image { background-image: url("../images/hero17.png"); }
+.container .heroes .hero:nth-child(18) .image { background-image: url("../images/hero18.png"); }
+.container .heroes .hero:nth-child(19) .image { background-image: url("../images/hero19.png"); }
+.container .heroes .hero:nth-child(20) .image { background-image: url("../images/hero20.png"); }
+
+.container .heroes .hero:nth-child(21) .image { background-image: url("../images/hero21.png"); }
+.container .heroes .hero:nth-child(22) .image { background-image: url("../images/hero22.png"); }
+.container .heroes .hero:nth-child(23) .image { background-image: url("../images/hero23.png"); }
+.container .heroes .hero:nth-child(24) .image { background-image: url("../images/hero24.png"); }
+.container .heroes .hero:nth-child(25) .image { background-image: url("../images/hero25.png"); }
+.container .heroes .hero:nth-child(26) .image { background-image: url("../images/hero26.png"); }
+.container .heroes .hero:nth-child(27) .image { background-image: url("../images/hero27.png"); }
+.container .heroes .hero:nth-child(28) .image { background-image: url("../images/hero28.png"); }
+.container .heroes .hero:nth-child(29) .image { background-image: url("../images/hero29.png"); }
+.container .heroes .hero:nth-child(30) .image { background-image: url("../images/hero30.png"); }
+
+.container .heroes .hero:nth-child(31) .image { background-image: url("../images/hero31.png"); }
+.container .heroes .hero:nth-child(32) .image { background-image: url("../images/hero32.png"); }
+
+.container .logo {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.container .logo img {
+  /* 부모 요소 가로 너비의 100%, 300px 보다 더 커질 수 없음 */
+  width: 100%;
+}
