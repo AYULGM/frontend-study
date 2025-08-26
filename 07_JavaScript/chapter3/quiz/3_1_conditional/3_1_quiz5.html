@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 문제5
+    // 사용자로부터 세 개의 정수를 입력받아, 
+    // 그 수들의 최대값과 최소값, 합계와 평균을 구해서 브라우저에 출력하세요.
+
+
+    // 풀이5
+    // 주의! 덧셈을 하거나 문자끼리 비교를 피하려면 숫자로 변환해 줄 것!!
+    // '11' > '2' => false    11의 맨앞의 십의자리인 1과   2를 비교하니 false를 반환함
+    // '11' > 2 => true
+    const num1 = Number(prompt('첫번째 정수를 입력하세요. : '));
+    const num2 = Number(prompt('두번째 정수를 입력하세요. : '));
+    const num3 = Number(prompt('세번째 정수를 입력하세요. : '));
+
+    let maxNum = num1;
+    // let maxNum = -Infinity; // -무한대랑 비교해도 됨
+    if (maxNum < num2) {
+      maxNum = num2;
+    }
+    if (maxNum < num3) {
+      maxNum = num3;
+    }
+    document.write('최대값:' + maxNum, '<br>');
+    document.write(`최대값: ${maxNum}<br>`); // 백틱으로 하는 방법
+
+    let minNum = num1;
+    // let min = Infinity;
+    if (minNum > num2) {
+      minNum = num2;
+    }
+    if (minNum > num3) {
+      minNum = num3;
+    }
+    document.write('최소값:' + minNum, '<br>');
+
+    const total = (num1 + num2 + num3);
+    document.write('합계:' + total, '<br>');
+    const average = total / 3;
+    document.write('합계:' + average, '<br>');
+
+
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
