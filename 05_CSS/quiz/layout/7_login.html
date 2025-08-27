@@ -86,12 +86,13 @@
       flex-direction: column;    
       position:relative;
     }
-    /* 이렇게 ,(쉼표)로 묶어서 코드 중복 줄이는게 더 좋은 방법임 
-     .id-box,
-    .pw-box {
-
-    }  */
-    .visibility_off {
+     /* 이렇게 ,(쉼표)로 묶어서 코드 중복 줄이는게 더 좋은 방법임  */
+    .id-box.focused,
+    .pw-box.focused {
+      /* JS 배우고 */
+      border: 3px solid red;
+    }  
+     .icon-eye {
       position: absolute;
       /* 눈으로 보고 대강맞추기 */
       top: 20px;
@@ -108,8 +109,9 @@
     }
     .id-box:hover,
     .pw-box:hover {
-      border-color: green;
-      border: 2px solid green;
+      /* JS연습때문에 주석처리 */
+      /* border-color: green;
+      border: 2px solid green; */
     }
     .btn-box {
       display: flex;
@@ -145,14 +147,14 @@
     <div class="login-container">
       <div class="id-box">
         <!-- input이 label 앞에올지 뒤에올지 개발자가 잘 선택해야 한다. CSS선택자의 한계점 -->
-        <input type="text" id="ID" class="id-input">
+        <input type="text" id="ID" class="id-input form-input">
         <label for="ID" class="id-label">아이디 또는 전화번호</label>
       </div>
       <div class="pw-box">
         <!-- 쌤은 id,pw input 전부 같은 클래스 이름 form-input으로 묶으심 -->
-        <input type="password" id="PW" class="pw-input">
+        <input type="password" id="PW" class="pw-input form-input">
         <label for="PW" class="pw-label">비밀번호</label>
-        <span class="material-symbols-outlined visibility_off">visibility_off</span>
+        <span class="material-symbols-outlined icon-eye">visibility_off</span>
       </div>
 
       <div class="btn-box">
@@ -161,5 +163,35 @@
       </div>
     </div>
   </div>
+
+  <!-- 2025 08 27 JS배우고 추가 -->
+  <script>
+    const inputEls = document.querySelectorAll('.form-input');
+
+    inputEls.forEach(function (inputEl){
+      console.log(inputEl);
+      const parentEl = inputEl.parentElement; // 부모 요소를 반환
+      console.log(parentEl);
+      
+      // focus: 포커스가 주어졌을 때 발생
+      inputEl.addEventListener('focus', function () {
+        parentEl.classList.add('focused');
+      });
+      
+      // blur: 포커를 잃을 때 발생
+      inputEl.addEventListener('blur', function () {
+        parentEl.classList.remove('focused');
+      });      
+    })
+
+    // 아이콘 클릭하면 아이콘 모양이 바뀌고 패스워드가 보이게끔
+    const eyeIcon = document.querySelector('.icon-eye')
+
+    eyeIcon.addEventListener('click', function() {
+      if (eyeIcon.textContent = 'off') eyeIcon.textContent = 'visibility';
+      else eyeIcon.textContent = 'visibility_off';
+    });
+
+  </script>
 </body>
 </html>
