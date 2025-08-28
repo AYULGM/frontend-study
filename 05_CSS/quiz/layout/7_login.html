@@ -5,139 +5,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
-  <!-- 구글 머티리얼 아이콘(심볼) -->
+  <!-- 구글 머티리얼 아이콘 -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
 
   <style>
     * {
       box-sizing: border-box;
     }
 
-    label {
+    .form-input {
+      width: 100%;
+      outline: none;
+      border: none;
       cursor: pointer;
-      opacity: 0.5;
-      transition: 0.3s;
-      position: absolute;
     }
-    input:focus + .id-label {
-      /* transform: scale(-0.5); */
-      font-size: 10px;
-      transform: translate(-3px,-15px);
-      /* 쌤은 transform대신에 bottom: 30px 이렇게 하심 */
 
-      /* focus가 풀리면 값이 써져있는데 placeholder가 중앙으로 오는건 나중에 자바스크립트로 해결 할것임 */
+    /* 버튼의 공통 스타일 */
+    .btn {
+      width: 100%;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
     }
-    input:focus + .pw-label {
-      /* transform: scale(-0.5); */
-      font-size: 10px;
-      transform: translate(-3px,-15px);
+    /* 버튼의 개별 스타일 */
+    .btn-login {
+      background-color: #09aa5c;
+      margin-top: 40px;
     }
+    .btn-join {
+      border: 1px solid #09aa5c;
+      color: #09aa5c;
+      background-color: #fff;
+      margin-top: 10px;
+    }
+
     .login-background {
-      background-color: white;
-      padding: 20px;
-      /* .login-container를 중앙 정렬하기 위해 부모에 flex 넣기 */
       display: flex;
       justify-content: center;
-      /* .login-background의 공간이 적어서 align-item:center를 해도 무반응 */
-      /* 그래서 height를 viewport에 맞추게 하면됨 */
       align-items: center;
-      /*이건 부모영역(body)에 맞추는거라 변함없음 */
       /* height: 100%; */
-
       /* 뷰포트의 높이만큼 가득 채우려면 100%가 아님에 주의! */
       height: 100vh;
-      
     }
     .login-container {
-      width: 60%;
-      max-width: 700px;
-      padding: 20px;
-      margin: 0 auto;
-      border: 1px solid gray;
-      border-radius: 10px;
-    }
-    .id-box {
-      /* padding: 10px; */
-      padding: 27px 15px 8px;
-      border: 1px solid gray;
-      /* 0px이 아니라 그냥 0줘도되네 */
-      border-radius: 10px 10px 0 0px;
-      display: flex;
-      flex-direction: column;
-      position:relative;
-    }
-    .id-box .id-label,
-    .pw-box .pw-label{
-      /* 부모기준으로 하니까 id-box ,pw-box에 position값은 필수로 줘야함 */
-      position: absolute;
-      left: 15px;
-      bottom: 15px;
-    }
-    .pw-box {
-      /* padding: 10px; */
-      padding: 27px 15px 8px;
-      border: 1px solid gray;
-      /* 두개의 box가 테두리가 겹쳐서 찐하게 나오는것을 취소하려면 */
-      border-top: 0px;
-      /* 0px이 아니라 그냥 0줘도되네 */
-      border-radius: 0px 0 10px 10px;
-      display: flex;
-      flex-direction: column;    
-      position:relative;
-    }
-     /* 이렇게 ,(쉼표)로 묶어서 코드 중복 줄이는게 더 좋은 방법임  */
-    .id-box.focused,
-    .pw-box.focused {
-      /* JS 배우고 */
-      border: 3px solid red;
-    }  
-     .icon-eye {
-      position: absolute;
-      /* 눈으로 보고 대강맞추기 */
-      top: 20px;
-      right: 5%;
-      cursor: pointer;
-    }
-    .id-input,
-    .pw-input {
-      outline: none;
-      border: 0px;
-      cursor: pointer;
-      background-color: white;
-      font-size: 20px;
-    }
-    .id-box:hover,
-    .pw-box:hover {
-      /* JS연습때문에 주석처리 */
-      /* border-color: green;
-      border: 2px solid green; */
-    }
-    .btn-box {
-      display: flex;
-      padding-top: 30px;
-      flex-direction: column;
-      row-gap: 10px;
+      width: 460px;
+      border: 1px solid #e1e3e5;
+      border-radius: 12px;
+      padding: 24px;
     }
 
-    /* 이렇게 줘도 되긴하는데 쌤은 btn공통클래스명 뒤에  클래스 명 하나 더 붙이심 (코드 중복 줄인거심) */
-    /* 아니면 ,(쉼표)를 줘서 다중선택을 해도 똑같을 듯 */
-    .btn:first-child {
-      background-color: green;
-      padding: 10px;
-      color: black;
-      font-weight: bold;
-      border: 1px solid green;
-      border-radius: 10px;      
-      cursor: pointer;
+    .login-container .id-box,
+    .login-container .pw-box {
+      height: 60px;
+      border: 1px solid #c5ccd2;
+      padding: 27px 15px 8px;
+      position: relative;
     }
-    .btn:last-child {
-      background-color: white;
-      padding: 10px;
-      color: green;
-      font-weight: bold;
-      border: 1px solid green;
-      border-radius: 10px;
+    .login-container .id-box.focused,
+    .login-container .pw-box.focused {
+      border: 2px solid #09aa5c;
+    }
+    .login-container .id-box {
+      border-radius: 8px 8px 0 0;
+    }
+    .login-container .pw-box {
+      border-radius: 0 0 8px 8px;
+      border-top: 0;
+    }
+
+    .login-container .text-label {
+      position: absolute;
+      bottom: 18px;
+      left: 15px;
+      color: rgba(0, 0, 0, 0.5);
+      transition: 0.3s;
+    }
+    .login-container .form-input:focus + .text-label,
+    .login-container .id-box.on .text-label,
+    .login-container .pw-box.on .text-label {
+      font-size: 12px;
+      bottom: 30px;
+    }
+    .login-container .icon-eye {
+      position: absolute;
+      top: 18px;
+      right: 15px;
       cursor: pointer;
     }
   </style>
@@ -146,29 +101,26 @@
   <div class="login-background">
     <div class="login-container">
       <div class="id-box">
-        <!-- input이 label 앞에올지 뒤에올지 개발자가 잘 선택해야 한다. CSS선택자의 한계점 -->
-        <input type="text" id="ID" class="id-input form-input">
-        <label for="ID" class="id-label">아이디 또는 전화번호</label>
+        <input type="text" id="id" class="form-input">
+        <label for="id" class="text-label">아이디 또는 전화번호</label>
       </div>
       <div class="pw-box">
-        <!-- 쌤은 id,pw input 전부 같은 클래스 이름 form-input으로 묶으심 -->
-        <input type="password" id="PW" class="pw-input form-input">
-        <label for="PW" class="pw-label">비밀번호</label>
+        <input type="password" id="pw" class="form-input">
+        <label for="pw" class="text-label">비밀번호</label>
         <span class="material-symbols-outlined icon-eye">visibility_off</span>
       </div>
 
-      <div class="btn-box">
-      <button type="button" class="btn">로그인</button>
-      <button type="button" class="btn">회원가입</button>
-      </div>
+      <button type="button" class="btn btn-login">로그인</button>
+      <button type="button" class="btn btn-join">회원가입</button>
     </div>
   </div>
 
-  <!-- 2025 08 27 JS배우고 추가 -->
   <script>
-    const inputEls = document.querySelectorAll('.form-input');
+    const inputEls = document.querySelectorAll('input.form-input');
+    const eyeIcon = document.querySelector('.icon-eye');
+    const pwInput = document.getElementById('pw');
 
-    inputEls.forEach(function (inputEl){
+    inputEls.forEach(function (inputEl) {
       console.log(inputEl);
       const parentEl = inputEl.parentElement; // 부모 요소를 반환
       console.log(parentEl);
@@ -177,21 +129,45 @@
       inputEl.addEventListener('focus', function () {
         parentEl.classList.add('focused');
       });
-      
+
       // blur: 포커를 잃을 때 발생
       inputEl.addEventListener('blur', function () {
         parentEl.classList.remove('focused');
-      });      
-    })
+      });
 
-    // 아이콘 클릭하면 아이콘 모양이 바뀌고 패스워드가 보이게끔
-    const eyeIcon = document.querySelector('.icon-eye')
-
-    eyeIcon.addEventListener('click', function() {
-      if (eyeIcon.textContent = 'off') eyeIcon.textContent = 'visibility';
-      else eyeIcon.textContent = 'visibility_off';
+      // 이벤트 추가 실습
+      // change: 요소의 값이 변경되고 포커스를 잃었을 때 발생
+      inputEl.addEventListener('change', function () {
+        console.log('change 이벤트 발생!');
+        console.log(inputEl.value);
+        
+        if (inputEl.value) { // input 요소에 값이 있으면
+          parentEl.classList.add('on');
+        } else {
+          parentEl.classList.remove('on');
+        }
+      });
+      // input: 요소가 입력을 받을 때마다 변경된 직후에 발생
+      inputEl.addEventListener('input', function () {
+        console.log('input 이벤트 발생!');
+      });
     });
 
+
+    eyeIcon.addEventListener('click', function () {
+      // if (pwInput.type === 'password') {
+      //   eyeIcon.textContent = 'visibility';
+      //   pwInput.type = 'text';
+      // } else {
+      //   eyeIcon.textContent = 'visibility_off';
+      //   pwInput.type = 'password';
+      // }
+
+      // 삼항 연산자 사용 시
+      const isPassword = pwInput.type === 'password';
+      pwInput.type = isPassword ? 'text' : 'password';
+      eyeIcon.textContent = isPassword ? 'visibility' : 'visibility_off';
+    });
   </script>
 </body>
 </html>

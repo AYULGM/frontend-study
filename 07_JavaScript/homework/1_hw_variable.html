@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 1번 -->
+  <h3>자라나라 스폰지밥</h3>
+  <div>
+    <button type="button" class="btn-sizeup">+</button>
+  </div>
+  <img src="images/sponge.png" alt="스폰지밥" class="sponge" width="50px">
+
+
+
+  <script>
+    const sizeupBtn = document.querySelector('.btn-sizeup');
+    const sponge = document.querySelector('.sponge');
+
+    sizeupBtn.addEventListener('click', function () {
+      // 주의! 이미지는 가로 사이즈만 바꾸면 자동으로 세로 사이즈도 바뀜
+      // sponge.width += 100;
+      // sponge.height += 100;
+
+      // 변수에 저장해두고 저장된 값을 사용
+      const imgWidth = sponge.width;
+      const imgHeight = sponge.height;
+
+      // 방법1: HTML 속성(attribute) -> DOM 속성(property)
+      // sponge.width = imgWidth + 100;
+      // sponge.height = imgHeight + 100;
+
+      // 방법2: CSS로 제어
+      sponge.style.width = `${imgWidth + 100}px`;
+      sponge.style.height = `${imgHeight + 100}px`;
+    });
+</script>
+
+  <!-- 2번 -->
+  <h3>이미지 크기 조정</h3>
+  <div>
+    <label for="widthValue">가로: </label>
+    <input type="number" id="widthValue">
+  </div>
+  <div>
+    <label for="heightValue">세로: </label>
+    <input type="number" id="heightValue">
+    <button type="button" class="btn-change">변경</button>
+  </div>
+  <img src="images/dung.png" alt="뚱이" class="dung" width="50">
+
+<script>
+    // 2번
+    const garo = document.querySelector('#widthValue');
+    const sero = document.querySelector('#heightValue');
+    const btn = document.querySelector('.btn-change');
+    const ddung = document.querySelector('.dung');
+
+    btn.addEventListener('click' , function () {
+      console.log(typeof garo.value , sero.value); // input의 type이 number여도 문자열로 넘어온다
+      
+      // 방법1
+      // ddung.width = garo.value;
+      // ddung.height = sero.value;
+
+      // 방법2
+      ddung.style.width = `${garo.value}px`;
+      ddung.style.height = `${sero.value}px`;
+    });
+  </script>
+
+
+
+
+</body>
+</html>

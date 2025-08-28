@@ -170,6 +170,17 @@
   <label for="volume">음량(0~50):</label>
   <input type="range" id="volume" min="0" max="50" step="2">
 
+  <!-- Quiz: span태그 사이에 음량(0~50) 값이 표시되게끔 -->
+  <span id="volumeValue"></span>
+  <script>
+    const volumeEl = document.querySelector('#volume');
+    const volumeValueEl = document.querySelector('#volumeValue');
+    // input은 값이 변경된 순간 즉시 발생, change는 값이 바뀐후 포커스를 잃을 때(focus -> blur) 발생
+    volumeEl.addEventListener('input', function () {
+      volumeValueEl.textContent = volumeEl.value;
+    });
+  </script>
+
   <hr>
 
   <!-- 비밀번호 -->

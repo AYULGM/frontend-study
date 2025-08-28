@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    img{
+      width: 180px;
+      height: 180px;
+      border: 1px solid green;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>날씨 확인</h1>
+  <span>계절</span>
+  <label>
+    <input type="radio" name="season" id="spring" value="봄">봄
+  </label>
+  <label>
+    <input type="radio" name="season" id="summer" value="여름">여름
+  </label>
+  <label>
+    <input type="radio" name="season" id="fall" value="가을">가을
+  </label>
+  <label>
+    <input type="radio" name="season" id="winter" value="겨울">겨울
+  </label>
+
+  <br>
+
+  <span>기온</span>
+  <input type="text" class="text">
+
+  <br>
+
+  <button type="button" class="check">확인</button>
+
+  <script>
+    // 3-1번. 날씨 출력 시 기본적으로 '봄', '여름', '가을', '겨울'을 출력하고
+    // 문제에 주어진 특정 조건에서만 '폭염 경보/폭염 주의보/한파 경보/한파 주의보'를 추가로 출력
+
+    // 체크된 요소를 찾는 선택자 예: input[name="season"]:checked
+    // const spring = document.querySelector('#spring');
+    // const summer = document.querySelector('#summer');
+    // const fall = document.querySelector('#fall');
+    // const winter = document.querySelector('#winter');
+    const text = document.querySelector('.text');
+    const check = document.querySelector('.check');
+
+
+    check.addEventListener('click', function () {
+      const boxEls = document.querySelector('input[name="season"]:checked');
+      console.log(boxEls.value);
+      if (boxEls.value === '봄') alert('봄');
+
+      if (boxEls.value === '여름') alert('여름'); {
+        // 숫자에 ''넣으면 문자열끼리 비교이기 때문에 십의자리, 일의자리 이렇게 대소비교를 해버림
+        if (text.value >= 35) {
+          alert('폭염 경보');
+        } else if (text.value >= 33 && text.value < 35) {
+          alert('폭염 주의보');
+        }
+      }
+      if (boxEls.value === '가을') alert('가을');
+
+      if (boxEls.value === '겨울') alert('겨울'); {
+        if (text.value <= -15) {
+          alert('한파 경보');
+        } else if (text.value > -15 && text.value <= -12) {
+          alert('한파 주의보');
+        }
+      }
+    });
+  </script>
+
+
+  <!-- 2번 -->
+  <h1>스폰지밥, 뚱이, 징징이</h1>
+  <label for="character">캐릭터 선택:</label>
+  <select id="character">
+    <option name ="char" value="sponge" class="sponge">스폰지밥</option> 
+    <option name ="char" value="ddung" class="ddung">뚱이</option>
+    <option name ="char" value="jing"  class="jing">징징이</option> 
+  </select>
+  <div class="charImg">
+    <!-- 이미지가 출력될 장소 -->
+ <img src="./images/sponge.png" alt="스폰지밥">
+  </div>
+
+  <script>
+    // const sponge = document.querySelector('.sponge');
+    // const ddung = document.querySelector('.ddung');
+    // const jing = document.querySelector('.jing');
+    const select = document.querySelector('#character');
+    const charImg = document.querySelector('.charImg');
+
+    select.addEventListener('change', function () {
+      const charEls = document.querySelector('option[name="char"]:checked');
+      if (charEls.value === 'sponge') {
+        charImg.innerHTML = ('<img src="./images/sponge.png" alt="스폰지밥">');
+      }
+      if (charEls.value === 'ddung') {
+        charImg.innerHTML = ('<img src="./images/dung.png" alt="뚱이">');
+      }
+      if (charEls.value === 'jing') {
+        charImg.innerHTML = ('<img src="./images/human.png" alt="징징이같은 휴먼">');
+      }
+    });
+  </script>
+</body>
+
+</html>

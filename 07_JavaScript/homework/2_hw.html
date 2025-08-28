@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>홀수? 짝수?</h>
+    <div>
+      <button type="button" id="plus">구슬추가</button>
+      <button type="button" id="guess">홀짝</button>
+      <button type="button" id="empty">초기화</button>
+    </div>
+
+    <div class="beads" style="display: flex;"> </div>
+
+    <hr>
+
+    <h1>문자 누적하기</h1>
+    <input type="text" id="input">
+    <button type="button" id="button" style="margin-left: 10px;">누적</button>
+    <textarea id="textarea" rows="5" cols="30" style="resize: none; display: block; margin-top: 20px;"></textarea>
+    
+    <script>
+      const plus = document.querySelector('#plus');
+      const guess = document.querySelector('#guess');
+      const empty = document.querySelector('#empty');
+      const beads = document.querySelector('.beads');
+
+      plus.addEventListener('click', function () {
+        beads.innerHTML += ('<div class="bead" style="background-color: aqua ; width: 50px ; height:50px ; border-radius : 50%;margin: 10px"></div>');
+        console.log(beads.innerHTML);
+      });
+      guess.addEventListener('click', function () {
+        const A = document.querySelectorAll('.bead');
+        
+        if(A.length % 2 ===0){
+          alert('짝');
+        } else {
+          alert('홀');
+        }
+      });
+      empty.addEventListener('click', function () {
+        beads.innerHTML = ('');
+      });
+
+      const button = document.querySelector('#button');
+      const input = document.querySelector('#input');
+      const textarea = document.querySelector('#textarea');
+      
+      button.addEventListener('click' , function () {
+        textarea.value += (`${input.value}`);
+        input.value = ('');
+      });
+    </script>
+
+
+</body>
+
+</html>
