@@ -79,5 +79,37 @@
     console.log(table);
     
   </script>
+
+  <!-- 3번 -->
+   <h1>귤농장</h1>
+   <button type="button" class="start-btn">체험시작</button>
+   <div class="gyul-place" style="display: flex; flex-wrap: wrap;">
+    <!-- 귤 들어갈 장소 -->
+   </div>
+
+   <script>
+    
+
+     const gyul_Place = document.querySelector(".gyul-place");
+    const start_Btn = document.querySelector(".start-btn");
+
+    start_Btn.addEventListener('click' , function () {
+      const gram = prompt("몇 그램?");
+      let orangeWeight = 0;
+      let html = '';
+      
+      // gram을 orangeWeight로 나눠서 그 횟수만큼 반복횟수 정하기도함
+      while (gram - orangeWeight >= 10) {
+        orangeWeight += 10;
+
+        // 오직 가독성 때문에 들여쓰기 하는사람 있음
+        html += '<div>';
+        html += `   <p>귤 ${orangeWeight}g</p>`;
+        html += '   <img src="images/gyul.png" alt="귤">';
+        html += '</div>';
+      }
+      gyul_Place.innerHTML = html;
+    });
+   </script>
 </body>
 </html>

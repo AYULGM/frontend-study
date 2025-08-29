@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .img-sponge {
+      width: 150px;
+      height: 150px;
+      border: 4px dotted green;
+      border-radius: 40px;
+    }
+</style>
+</head>
+<body>
+  <!-- 1번 -->
+  <img src="images/sponge.png" alt="스폰지밥" class="img-sponge">
+  <!-- this: 이벤트가 발생한 요소 자기자신 -->
+  <input type="range" min="0" max="75" step="1" oninput="radiusAdd(this.value)">
+  <!-- 초기값으로 40을 줬는데 이렇게 하드코딩말고 원래는 자바스크립트로 min과 max의 중간을 주는게 좋음 -->
+  <span id="rangeValue">40</span>
+
+  <script>
+    // 1번
+    const spongeImg = document.querySelector('.img-sponge');
+    const rangeValue = document.querySelector('#rangeValue');
+
+    function radiusAdd(round) {
+      rangeValue.innerText = round;
+      // css에서 js로 넘어올때 -(하이픈)이 빠지고 카멜케이스로 넘어온다. 단위 'px'도 작성.
+      spongeImg.style.borderRadius = round + 'px';
+    }
+  </script>
+</body>
+</html>
