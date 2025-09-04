@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 문제2
+    // 요일 보여주기
+
+    // 특정 날짜 객체를 생성하면 'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT' 형식으로 요일을 보여주도록 만들어보세요.
+    // 2가지 방법으로 각각 구현해 볼 것!
+    // 1) 조건문(if 또는 switch)을 이용한 방법
+    // 2) 배열을 이용한 방법
+
+    // 예시:
+    // const date = new Date(2023, 0, 5); // 2023년 1월 5일
+    // "THU"가 출력되어야 합니다.
+
+    // 풀이2-1
+    const date = new Date(2023, 0, 5);
+    let weekday = date.getDay();
+
+    if(weekday === 0) {
+      weekday = 'SUN';
+    } else if (weekday === 1) {
+      weekday = 'MON'
+    } else if (weekday === 2) {
+      weekday = 'TUE'
+    } else if (weekday === 3) {
+      weekday = 'WED'
+    } else if (weekday === 4) {
+      weekday = 'THU'
+    } else if (weekday === 5) {
+      weekday = 'FRI'
+    } else if (weekday === 6) {
+      weekday = 'SAT'
+    }
+
+    document.write(weekday, '<br>');
+
+    weekday = date.getDay();
+
+    switch (weekday) {
+      case 0:
+        weekday = 'SUN';
+        break;
+      case 1:
+        weekday = 'MON';
+        break;
+      case 2:
+        weekday = 'TUE';
+        break;
+      case 3:
+        weekday = 'WED';
+        break;
+      case 4:
+        weekday = 'THU';
+        break;
+      case 5:
+        weekday = 'FRI';
+        break;
+      case 6:
+        weekday = 'SAT';
+        break;
+      }
+    document.write(weekday, '<br>');
+    // 풀이2-2
+    let weekdayArray = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+    
+    document.write(weekdayArray[date.getDay()], '<br>');
+
+  </script>
+</body>
+</html>
