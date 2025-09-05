@@ -33,9 +33,9 @@
       // 풀이4
       const fileName = fileInput.files[0].name;
       console.log(fileName);
-      const fileExt = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
+      const fileExt = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase(); // 마지막 .의 위치를잡고 .(온점)은 필요없으니 그다음인덱스부터(+1)
       console.log(fileExt);
-
+      
       let valid = false;
       for (let i = 0; i < imgFileExt.length; i++) {
         if (fileExt.indexOf(imgFileExt[i]) > -1) {
@@ -46,6 +46,7 @@
       if (!valid) {
         alert('이미지 파일이 아닙니다!');
       }
+      
     });
     
   </script>
