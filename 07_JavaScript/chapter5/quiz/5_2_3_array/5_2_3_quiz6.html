@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 문제6
+    // 로또 번호 추첨기(완성)
+    // 반복문을 이용하여 1~45까지의 랜덤한 정수값을 만들어내고 중복값이 아닐때만 lottoArr 배열에 추가해준다.
+    // 로또 번호가 6개가 완성되면 오름차순으로 정렬까지 해서 출력해보세요.
+    // while문 사용하면 조금 더 편함!
+
+    const lottoArr = []; // 빈 배열
+
+    // 풀이6
+    while (lottoArr.length < 6) {
+      const randomNum = Math.floor(Math.random() * 45) + 1; // 랜덤숫자 6개가 나옴
+      if (!lottoArr.includes(randomNum)) { // lottoArr에 randomNum가 포함되어 있지 않을때
+        lottoArr.push(randomNum); // lottoArr배열에 randomNum을 넣어준다.
+      }
+    }
+    // function () {} 이거를 () => {} 화살표함수로 간략화함
+    document.write(lottoArr.sort((a, b) => { return a - b;}),'<br>'); // 오름차순 정렬
+    document.write(lottoArr.sort((a, b) => a - b)); // 오름차순 정렬 ES6차문법(화살표함수쓸때 , 1줄이면 return과 중괄호 생략가능)
+
+    
+  </script>
+</body>
+</html>
