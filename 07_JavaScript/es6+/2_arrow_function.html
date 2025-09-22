@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 화살표 함수는 많이쓰기 때문에 중요하다. -->
+  <!-- es 6차 부터 생긴 화살표 함수. -->
+  <script>
+    // 화살표 함수
+    // 화살표(=>)를 사용해서 함수를 선언하는 방법
+    () => {}; // 헷갈리면 이 모양부터 적고 시작해라.
+
+    // ES5에서 일반적인 방법
+    // 함수 선언문
+    function hello(name) {
+      return 'hello ' + name;
+    }
+
+    // 함수 표현식 (변수에다 함수를 할당한 것) , 변수니까 세미콜론을 붙여야한다.
+    const hello2 = function (name) {
+      return 'hello ' + name;
+    };
+
+    // 화살표 함수로 바꾸면 (화살표 함수로 익명함수라 함수 표현식으로 쓴다.)
+    const hello3 = (name) => {
+      return 'hello ' + name;
+    };
+
+    // 매개변수가 하나만 있으면 괄호 생략 가능
+    const hello4 = name => {
+      return 'hello ' + name;
+    };
+    // 매개변수가 없거나 2개 이상인 경우에는 괄호를 써야 함(생략 불가)
+
+    // 암시적 반환 ( 더 줄이는 것)
+    // 리턴문 한 줄만 있을 경우 중괄호(함수 블록)랑 return 키워드 둘 다 생략 가능
+    // 주의! return 키워드만 생략하면 안됨!! , 반드시 중괄호까지 생략을 해야함
+    const hello5 = name => 'hello ' + name;
+    console.log(hello5('여긴 hello5입니다.'));
+
+    // (중요) 코드의 간결함보다는 가독성이 우선
+    // 아직 화살표 함수가 익숙하지 않다면 위에 hello3 과 같이 작성하는 것이 좋다.
+    
+    // 객체를 암시적(암묵적)으로 반환하기
+    function getFavoriteMovie() {
+      return {
+        title: 'Inception',
+        year: '2010',
+        director: 'Nolan',
+        rating: 9.6
+      };
+    }
+    console.log(getFavoriteMovie());
+    
+    // 화살표 함수로 바꾸기
+    const getFavoriteMovie2 = () => {
+        return {
+        title: 'Inception',
+        year: '2010',
+        director: 'Nolan',
+        rating: 9.6
+      }
+    };
+    console.log(getFavoriteMovie2());
+
+
+    // 화살표 함수를 더 줄이기
+    // 객체를 소괄호로 감싸야한다.
+    // 그렇지 않으면 {}를 함수의 실행 블록으로 인식해서 에러가 발생함
+        const getFavoriteMovie3 = () => ({
+        title: 'Inception',
+        year: '2010',
+        director: 'Nolan',
+        rating: 9.6
+      });
+    console.log(getFavoriteMovie3());
+
+    // Quiz: 화살표 함수로 변경하기
+    // Quiz1
+    function add(num1, num2) {
+      return num1 + num2;
+    }
+
+    // 풀이1
+    const add2 = (num1, num2) => {
+      return num1 + num2;
+    };
+
+    // 풀이1 생략버전
+    const add3 = (num1, num2) => num1 + num2;
+
+    // Quiz2
+    function ask(question, yes, no) {
+      if (confirm(question)) yes();
+      else no();
+    }
+
+    ask(
+      '동의하십니까?',
+      function () { alert('동의하셨습니다.'); }, // 콜백(callback) 함수(이벤트리스너,이벤트핸들러때 배웠음) , 필요할때 쓰는 함수
+      function () { alert('취소 버튼을 누르셨습니다.'); }
+    );
+
+    // 풀이2 (이건 if,else문 두줄이라 생략 불가능)
+    const ask2 = (question, yes, no) => {
+      if (confirm(question)) yes();
+      else no();
+    };
+
+    ask2(
+      '동의하십니까?',
+      () => { alert('동의하셨습니다.'); }, 
+      () => { alert('취소 버튼을 누르셨습니다.'); }
+    )
+
+    // ask2 생략버전
+    ask2(
+      '동의하십니까?',
+      () => alert('동의하셨습니다.'), // return과 중괄호 생략
+      () => alert('취소 버튼을 누르셨습니다.')
+    );
+    // (참고) 동작에 영향을 미치지 않기에 {} 생략 가능
+
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- jQuery 연결 , j쿼리다운로드에서 Google CDN 눌러서 가져옴 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script>
+    // 2. jQuery 위치에 따른 동작 (DOM은 )
+    // 이 스크립트는 적용이 되지않음 , 스크립트가 p태그보다 위에있어서 찾을수가 없음, 그래서 defer를 달아줬었지, 아니면 스크립트를 맨아래 달던가.
+    
+    // $('p').click(function () {
+      // alert('테스트');
+    // });
+
+    // 이렇게 해주면 defer와 마찬가지 효과다.
+    $(document).ready(function () {
+      // DOM이 완전히 로드된 후 실행할 코드
+      $('p').click(function () {
+        alert('테스트');
+      });
+    });
+
+    // 축약형
+    $(function () {
+      $('p').click(function () {
+        alert('테스트');
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="welcome"></div>
+  <div class="welcome"></div>
+
+  <p>클릭하세요!</p>
+
+  <script>
+  // 1. jQuery 기본 문법
+  // jQuery(제어대상).method1().method2();
+  // 또는 아래와 같이 주로 별칭 사용
+  // $(제어대상).method1().method2();
+
+  // jQuery에서 .html이 DOM에서 .innerhtml과 똑같네
+  // jQuery에서 .css가 DOM에서 style.backgroundColor="yellow"와 똑같네
+
+
+  // 제어대상에는 'CSS 선택자' 또는 DOM 객체 사용 가능
+
+  // 별칭으로 안쓰기
+  // jQuery('.welcome').html('<b>Hello world!</b>').css('background-color', 'yellow'); // j쿼리 라이브러리 안에 들어있는 메소드임
+
+  // 별칭으로 쓰는게 편하다함
+  // (참고) 제이쿼리 메소드들은 제어했던 대상을 리턴해주기 때문에 메소드 체이닝이 가능하다. (.html을 $에 적용하고 그다음에 .css로 가서 $에 적용하고... 메소드 체이닝)
+  $('.welcome').html('<b>Hello world!</b>').css('background-color', 'yellow'); // j쿼리 라이브러리 안에 들어있는 메소드임
+  $(document.body).css('background-color', 'orange');
+  </script>
+</body>
+</html>
